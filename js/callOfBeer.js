@@ -17,5 +17,11 @@ var callOfBeerApp = angular.module('callOfBeerApp', [
 var mapMod = angular.module('mapCob',['leaflet-directive']);
 
 mapMod.controller("mapCtrl", [ "$scope", function($scope) {
-    // Nothing here!
+    angular.extend($scope, {
+        center: {
+            lat: 46.25,
+            lng: 2.1,
+            zoom: 6
+        }
+    });
 }]);
