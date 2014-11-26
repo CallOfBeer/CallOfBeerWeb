@@ -4,7 +4,7 @@ html{
 
 body{
   margin:0;
-  padding-right: 300px;
+  padding-right: 400px;
   height:100%; 
   width:100%;
 }
@@ -20,8 +20,8 @@ body{
 	right: 0;
 	top: 0;
 	bottom: 0;
-	width: 300px;
-	background: red;
+	width: 400px;
+	background: lightgreen;
 }
 
 .mapCob {

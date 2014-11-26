@@ -7,7 +7,7 @@
  */
 var callOfBeerApp = angular.module('callOfBeerApp', [
     // Dépendances du "module"
-    'events'
+    'mapCob'
 ]);
 
 
