@@ -14,18 +14,25 @@ var callOfBeerApp = angular.module('callOfBeerApp', [
 /**
  * Déclaration du module events
  */
-var mapMod = angular.module('mapCob',['leaflet-directive']);
+var mapMod = angular.module('mapCob',['leaflet-directive', 'ngResource']);
 
-mapMod.controller("mapCtrl", [ "$scope", '$http', function($scope, $http) {
+mapMod.controller("mapCtrl", [ "$scope", '$http', '$resource', function($scope, $http, $resource) {
 	$scope.center = {
         lat: 46.25,
         lng: 2.1,
         zoom: 6
     };
 
-    var marquers = $http.get('http://api.callofbeer.com/events?topLat=45&topLon=-1&botLat=44&botLon=0').success(successCallback);
+    navigator.geolocation.getCurrentPosition(function(data){
+    	$scope.center.lat = data.coords.latitude;
+    	$scope.center.lng = data.coords.longitude;
+    	$scope.center.zoom = 14;
+    });
 
-    var successCallback = function(data, status, headers, config) {
+
+    $http.get('http://api.callofbeer.com/events?topLat=45&topLon=-1&botLat=44&botLon=0').success(successCallback);
+
+    function successCallback(data) {
     	console.log(data);
     }
 }]);
